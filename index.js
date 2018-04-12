@@ -1,9 +1,12 @@
 let boxs = document.querySelectorAll(".box");
+let winner = document.querySelector('.winner');
 
 
 let click = 0;
 
 function clickOn(e) {
+
+  console.log(click)
 
 
   if(!this.innerHTML) {
@@ -44,17 +47,63 @@ let mapBoard =
   }
 
 
+  //really need to re factor this!!!!
+
+
   function checkBoard() {
-    console.log('check');
-
-    if(mapBoard.o0 === mapBoard.l0 && mapBoard.l0 === mapBoard.t0 ) {
-      console.log( mapBoard.o0, " wins")
-    } else if(mapBoard.o1 === mapBoard.l1 && mapBoard.l1 === mapBoard.t1 ) {
-      console.log( mapBoard.o1, " wins")
-    } else if(mapBoard.o2 === mapBoard.l2 && mapBoard.l2 === mapBoard.t2 ) {
-      console.log( mapBoard.o2, " wins")
+    console.log(click);
+    if(mapBoard.o1 === 'x' && mapBoard.l1 === 'x' && mapBoard.t1 === 'x') {
+      winner.classList.remove('hidden')
+      winner.innerHTML = mapBoard.o1 + ' ' +  "Wins!"
+    } else if(mapBoard.o2 === 'x' && mapBoard.l2 === 'x' && mapBoard.t2 === 'x') {
+          winner.classList.remove('hidden');
+          winner.innerHTML = mapBoard.o2 + ' ' +  "Wins!"
+    } else if(mapBoard.o0 === 'x' && mapBoard.l0 === 'x' && mapBoard.t0 === 'x'){
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else  if(mapBoard.o1 === 'o' && mapBoard.l1 === 'o' && mapBoard.t1 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o1 + ' ' +  "Wins!"
+    } else if(mapBoard.o2 === 'o' && mapBoard.l2 === 'o' && mapBoard.t2 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o2 + ' ' +  "Wins!"
+    } else if(mapBoard.o0 === 'o' && mapBoard.l0 === 'o' && mapBoard.t0 === 'o'){
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else  if(mapBoard.o0 === 'o' && mapBoard.o1 === 'o' && mapBoard.o2 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else if(mapBoard.l0 === 'o' && mapBoard.l1 === 'o' && mapBoard.l2 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.l0 + ' ' +  "Wins!"
+    } else if(mapBoard.t0 === 'o' && mapBoard.t1 === 'o' && mapBoard.t2 === 'o'){
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.t0 + ' ' +  "Wins!"
+    } else  if(mapBoard.o0 === 'x' && mapBoard.o1 === 'x' && mapBoard.o2 === 'x') {
+      winner.classList.remove('hidden')
+      winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else if(mapBoard.l0 === 'x' && mapBoard.l1 === 'x' && mapBoard.l2 === 'x') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.l0 + ' ' +  "Wins!"
+    } else if(mapBoard.t0 === 'x' && mapBoard.t1 === 'x' && mapBoard.t2 === 'x'){
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.t0 + ' ' +  "Wins!"
+    } else  if(mapBoard.o0 === 'o' && mapBoard.l1 === 'o' && mapBoard.t2 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else if(mapBoard.t0 === 'o' && mapBoard.l1 === 'o' && mapBoard.o2 === 'o') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.t0 + ' ' +  "Wins!"
+    } else  if(mapBoard.o0 === 'x' && mapBoard.l1 === 'x' && mapBoard.t2 === 'x') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.o0 + ' ' +  "Wins!"
+    } else if(mapBoard.t0 === 'x' && mapBoard.l1 === 'x' && mapBoard.o2 === 'x') {
+        winner.classList.remove('hidden');
+        winner.innerHTML = mapBoard.t0 + ' ' +  "Wins!"
+    } else if (click == 9 ){
+      winner.classList.remove('hidden');
+      winner.innerHTML = "Draw!"
     }
-
 
   }
 
@@ -65,9 +114,8 @@ boxs.forEach(function(a) {
 
     a.addEventListener('click', clickOn);
     a.addEventListener('click', addMove);
-    if( click > 3 ) {
-      a.addEventListener('click', checkBoard);
-    }
+    a.addEventListener('click', checkBoard);
+
 
 
 
